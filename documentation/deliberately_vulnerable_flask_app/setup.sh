@@ -7,11 +7,7 @@
 # Source this file to run it:
 # . ./setup.sh
 
-# This file should ONLY include standard setup steps which would be used by a
-# real Flask project. Do not add anything Pysa/Pyre specific.
-
-python3 -m venv venv
-# shellcheck disable=SC1091
-. venv/bin/activate
-pip install Flask
+pip install -r requirements.txt
 rm ../../.pyre_configuration
+# Create .pyre_configuration with as ../../stubs as taint_models_path
+echo '{"source_directories": ["."], "taint_models_path": "../../stubs"}' > ./.pyre_configuration

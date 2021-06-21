@@ -1,0 +1,28 @@
+name: pysa
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  pysa:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+
+      - name: Install pyre-check
+        run: |
+          VERSION=$(grep "version" .pyre_configuration | sed -n -e 's/.*\(0\.0\.[0-9]*\).*/\1/p')
+          pip install pyre-check-nightly==$VERSION
+
+      - name: Run & Test Pysa
+        run: |
+          cd ./documentation/deliberately_vulnerable_flask_app
+          . ./setup.sh
+          python ./run_integration_tests.py

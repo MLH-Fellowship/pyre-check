@@ -1,0 +1,17 @@
+[
+  {
+    "path": "rce.py",
+    "define": "rce.definite_rce",
+    "code": 6065
+  },
+  {
+    "path": "rce.py",
+    "define": "rce.potential_rce_1",
+    "code": 6065
+  },
+  {
+    "path": "rce.py",
+    "define": "rce.potential_rce_2",
+    "code": 6065
+  }
+]
