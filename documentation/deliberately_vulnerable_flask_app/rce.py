@@ -4,7 +4,7 @@
 # LICENSE file in the root directory of this source tree.
 
 import subprocess
-from MySQLdb import _mysql
+import sqlite3
 from flask import Flask
 import request
 from lxml import etree
@@ -41,7 +41,7 @@ def definite_xss(payload: str) -> None:
 
 @app.route("/sql/<string:payload>")
 def definite_sql(payload: str) -> None:
-    con = _mysql.connect()
+    con = sqlite3.connect()
     cur = con.cursor()
     cur.execute(payload)
 
