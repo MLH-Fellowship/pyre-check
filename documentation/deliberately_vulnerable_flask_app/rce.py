@@ -53,4 +53,4 @@ def definite_ssrf(payload: str) -> None:
 
 @app.route("/xxe/<string:payload>")
 def definite_xxe(payload: str) -> None:
-    doc = etree.fromstring(payload)
+    etree.fromstring(payload)
